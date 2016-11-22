@@ -540,7 +540,7 @@ vorpal._onKeypress = function (key, value) {
 vorpal.prompt = function () {
   var _this = this;
 
-  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var userCallback = arguments[1];
 
   return new Promise(function (resolve) {
@@ -553,7 +553,7 @@ vorpal.prompt = function () {
       }
     };
 
-    var prompt = undefined;
+    var prompt = void 0;
     var ssn = _this.getSessionById(options.sessionId);
 
     if (!ssn) {

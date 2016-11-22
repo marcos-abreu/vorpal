@@ -34,7 +34,7 @@ var UI = function (_EventEmitter) {
   function UI() {
     _classCallCheck(this, UI);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UI).call(this));
+    var _this = _possibleConstructorReturn(this, (UI.__proto__ || Object.getPrototypeOf(UI)).call(this));
 
     var self = _this;
 
@@ -141,7 +141,7 @@ var UI = function (_EventEmitter) {
       var render = inquirer.prompt.prompts[promptType].prototype.render;
       inquirer.prompt.prompts[promptType].prototype.render = function () {
         self._activePrompt = this;
-        return render.call(this);
+        return render.apply(this, arguments);
       };
     };
 
@@ -193,7 +193,7 @@ var UI = function (_EventEmitter) {
     value: function prompt(options, cb) {
       var _this2 = this;
 
-      var prompt = undefined;
+      var prompt = void 0;
       options = options || {};
       if (!this.parent) {
         return prompt;
